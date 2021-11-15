@@ -36,8 +36,7 @@ class Person2 {
     
     // al ser publico ya lo vuelve un atributo de la clase y el valor que
     // se reciba por el constructor ya se asigna directamente.
-    constructor(public age:number, public lastName: string){
-    }
+    constructor(public age: number, public lastName: string){}
 }
 
 // COn esto construyo el objeto
@@ -48,3 +47,10 @@ const pato = new Person(33,'Mariano');
 
 // Si le pongo private, solo es accesible para uso interno dentro de la clase Persona
 // a menos que se utilice un getter o alguna de esas estrategias
+
+// String Interpolation:
+
+// {{ 1+1 }}
+// {{ myVar }}
+// {{ myFunction() }}
+
