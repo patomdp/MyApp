@@ -14,4 +14,55 @@ img[title]:hover::after {
     background: black !important;
     font-family: serif;
     font-size: 1em;
-  }
+}
+
+.products--grid{
+    //mobile First
+    display: flex;
+    flex-direction: column;
+    //gap: 1em;
+
+    div {
+        img{
+            width: 100%;
+            border-radius: 10px;
+        }
+        h2, p {
+            margin: 0;
+        }
+    }
+} 
+
+// esto funciona como un IF a nivel de CSS, le estoy diciendo que cuando mida mas que 40EM (medida ipad)
+@media screen and (min-width: 40em) {
+    .products--grid{        
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); // Le decimos que queremos que este en 5 columnas pero fraccionado
+        grid-gap: 1em;// espaciado entre los grids
+        //Ahora tenemos que cambiar el tamaño de las imagenes para que el grid sea flexible
+    }
+}
+// Tamaño Desktop
+@media screen and (min-width: 70em) {
+    .products--grid{        
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); // Le decimos que queremos que este en 5 columnas pero fraccionado
+        grid-gap: 1em;// espaciado entre los grids
+        //Ahora tenemos que cambiar el tamaño de las imagenes para que el grid sea flexible
+    }
+}
+
+.message-error{
+    background: red;
+    color: white;
+    opacity: 0;
+    transition: all linear .5s;
+    &.invalid { //Solo si se acompaña con la clase invalid
+     opacity: 1;
+    }
+}
+
+.dos-columns{
+    display: grid;
+    grid-template-columns: repeat (2,1fr );
+}

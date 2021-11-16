@@ -53,36 +53,40 @@
 <button (click)="increaseAge()">Age++</button>
 
 <div (scroll)="onScroll($event)" class="box">
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perspiciatis porro ab, quod dolorem, nihil, optio minus consequuntur suscipit sequi delectus vel quaerat necessitatibus distinctio voluptates! Magnam dolores nesciunt sapiente!
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perspiciatis porro ab, quod dolorem, nihil, optio minus consequuntur suscipit sequi delectus vel quaerat necessitatibus distinctio voluptates! Magnam dolores nesciunt sapiente!</p>
-  </div>
-  
-  <!--  
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perspiciatis porro ab, quod dolorem, nihil, optio
+    minus consequuntur suscipit sequi delectus vel quaerat necessitatibus distinctio voluptates! Magnam dolores nesciunt
+    sapiente!
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus perspiciatis porro ab, quod dolorem, nihil, optio
+    minus consequuntur suscipit sequi delectus vel quaerat necessitatibus distinctio voluptates! Magnam dolores nesciunt
+    sapiente!</p>
+</div>
+
+<!--  
     
     Las propiedades de un $event (objeto) varían según el tipo de evento DOM. 
     Por ejemplo, un evento de mouse incluye información diferente a la de un evento 
     de edición de cuadro de entrada.
     
   -->
-  
-  <!-- En este evento vamos a capturar la pulsación de teclas 
+
+<!-- En este evento vamos a capturar la pulsación de teclas 
     De esta manera estamos leyendo el valor de un input con un evento y cambiando el valor del objeto desde el input
   -->
-  <input type="text" [value]="person.name" (keyup)="changeName($event)" />
-  <p>Nombre: {{person.name}}</p>
-  
-  <!-- //  Eventos y sintaxis de binding con eventos
+<input type="text" [value]="person.name" (keyup)="changeName($event)" />
+<p>Nombre: {{person.name}}</p>
+
+<!-- //  Eventos y sintaxis de binding con eventos
     https://angular.io/guide/binding-syntax
     https://www.eduforbetterment.com/lists-of-useful-events-types-for-event-binding-in-angular/   
     https://developer.mozilla.org/en-US/docs/Web/Events
   -->
-  <!-- 
+<!-- 
     <input type="text" [value]="values" (keyup)="onK($event)" />
     <p>Nombre on K: {{values}}</p>
     <input type="text" [value]="values" (keyup)="onKey($event)" />
     <p>Nombre on Key: {{values}}</p> -->
-    
-    <!-- DATA [(BINDING)] doble enlace Esto es una fusión entre escuchar un evento con (Event Binding)
+
+<!-- DATA [(BINDING)] doble enlace Esto es una fusión entre escuchar un evento con (Event Binding)
       y setear una propiedad con [property binding]
       Lo hacemos con ngModel - Banana in a box [(ngModel)]
       Esto se utiliza mucho para los INPUTS
@@ -92,9 +96,9 @@
       
       Vamos a utilizar el paquete de Angular Forms donde vamos a tener ngModel
     -->
-    <hr>
-    <h1>NgModel</h1>
-    <!-- Con esto se va a hacer una fusión entre enviar el valor del input y asignarlo a la variable 
+<hr>
+<h1>NgModel</h1>
+<!-- Con esto se va a hacer una fusión entre enviar el valor del input y asignarlo a la variable 
     Pero primero tenemos que habilitar el paquete/modulo de ngModel en app.module.ts
     lo ponemos en el array de imports y se importa automaticamente arriba
     FormsModule.
@@ -105,42 +109,42 @@
     Pero en cuanto a que es valido? Se pueden poner validaciones nativas de HTML, como required
     o patrones, etc.
   -->
-    <input type="text" required #nameInput="ngModel" [(ngModel)]="person.name">
-    <p>Valid: {{nameInput.valid}}</p>
-    <!-- En los type number tambien podemos validar maximos y minimos -->
-    <input type="number" max="100" min="1" required #ageInput="ngModel" [(ngModel)]="person.age">
-    <p>Age: {{person.age}}</p>
-    <p>Valid: {{ageInput.valid}}</p>
-  <hr>
-  <h1>*ngIf</h1>
-  <p>TIP: Probar con Julian 18 años</p>
-  <!-- Directivas con condicionales, si esto se cumple muestra el contenido, sino no -->
-  <p *ngIf=" person.name === 'Patricio'">
-    My Content - Soy {{person.name}}
-  </p>
-  <!-- Directivas con condicionales, si esto se cumple muestra el contenido, sino no que muestre el elseblock-->
-  <p *ngIf=" person.name === 'Julian' && person.age === 18; else elseBlock">
-    My Content - Soy {{person.name}}
-  </p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.name">
+<p>Valid: {{nameInput.valid}}</p>
+<!-- En los type number tambien podemos validar maximos y minimos -->
+<input type="number" max="100" min="1" required #ageInput="ngModel" [(ngModel)]="person.age">
+<p>Age: {{person.age}}</p>
+<p>Valid: {{ageInput.valid}}</p>
+<hr>
+<h1>*ngIf</h1>
+<p>TIP: Probar con Julian 18 años</p>
+<!-- Directivas con condicionales, si esto se cumple muestra el contenido, sino no -->
+<p *ngIf=" person.name === 'Patricio'">
+  My Content - Soy {{person.name}}
+</p>
+<!-- Directivas con condicionales, si esto se cumple muestra el contenido, sino no que muestre el elseblock-->
+<p *ngIf=" person.name === 'Julian' && person.age === 18; else elseBlock">
+  My Content - Soy {{person.name}}
+</p>
 <!-- Esto -->
-  <ng-template #elseBlock>
-    <p>Bloque de Else</p>
-  </ng-template>
+<ng-template #elseBlock>
+  <p>Bloque de Else</p>
+</ng-template>
 
-  <!--  -->
-  <input type="text" required [(ngModel)]="person.name">
-  <input type="number" required [(ngModel)]="person.age">
+<!--  -->
+<input type="text" required [(ngModel)]="person.name">
+<input type="number" required [(ngModel)]="person.age">
 
-  <hr>
+<hr>
 
-  <h1>*ngFor</h1>
-  <!-- (keyup.enter)="addName()" Con esto se hace el evento de KeyUp cuando se presiona Enter -->
-  <input [(ngModel)]="newName" (keyup.enter)="addName()" type="text" name="" id="">
+<h1>*ngFor</h1>
+<!-- (keyup.enter)="addName()" Con esto se hace el evento de KeyUp cuando se presiona Enter -->
+<input [(ngModel)]="newName" (keyup.enter)="addName()" type="text" name="" id="">
 <button (click)="addName()">Add Name</button>
 <ul>
   <!-- Se puede usar "index as i" o hacerlo con "let i = index" -->
   <li *ngIf="names.length === 0">La lista esta vacía. Agregue un nombre</li>
-  <li *ngFor="let name of names; index as i"> 
+  <li *ngFor="let name of names; index as i">
     {{i+1}} - {{ name }}
     <button (click)="deleteName(i)">DELETE</button>
   </li>
@@ -151,7 +155,7 @@
 
 <ul>
   <li *ngFor="let saint of saints; index as i">
-    {{ saint }} - 
+    {{ saint.name }} - {{saint.star}} - 
     <button (click)="removeStar(i)">-⭐</button>
     <button (click)="addStar(i)">+⭐</button>
   </li>
@@ -160,14 +164,14 @@
 <hr>
 <!-- Video 13 -->
 <h1>*ngFor Objetos</h1>
-<div style="display: flex; gap: 1em">
+<div class="products--grid">
   <div *ngFor="let product of products; index as i">
-  <!-- no con string interpolation, sino con property binding
-    <img src="{{product.image}}" height="100px" alt=""> -->
+    <!-- no con string interpolation, sino con property binding
+    <img src="{{product.image}} "width="250px" height="100px" alt=""> -->
 
-    <img [src]="product.image" width="250px" alt="image-{{i}}" title="{{product.name}}">
+    <img [src]="product.image" alt="image-{{i}}" title="{{product.name}}">
     <h2> $ {{product.price}}</h2>
-    <p>{{product.name}}}</p>
+    <p>{{product.name}}</p>
 
   </div>
 </div>
@@ -183,21 +187,48 @@
 <p *ngIf="person.name === 'camilo'"> La persona es Camilo</p>
  -->
 
- <!-- NGSWITCH se utiliza el [property binding] -->
- <div [ngSwitch]="person.name">
+<!-- NGSWITCH se utiliza el [property binding] -->
+<div [ngSwitch]="person.name">
   <p *ngSwitchCase="'seiya'"> El santo es Seiya de Pegaso</p>
   <p *ngSwitchCase="'shiryu'"> El santo es Shiryu de Dragón</p>
   <p *ngSwitchCase="'hyoga'"> El santo es Hyoga de Cisne</p>
   <p *ngSwitchCase="'shun'"> El santo es Shun de Andrómeda</p>
   <p *ngSwitchCase="'ikki'"> El santo es Ikki de Fénix</p>
   <p *ngSwitchDefault> No se conoce el santo</p>
+</div>
+
+<hr>
+<h1>Class and Style</h1>
+<input type="text" minlength="3" required #saintInput="ngModel" [(ngModel)]="newSaint.name"/>
+<!--  
+Con class.active se bindea y activa la clase si se cumple la condicion
+en este caso, que el nameInput sea valido
+ -->
+<p class="message-error" [class.invalid]="saintInput.invalid">
+  El campo es requerido
+</p>
+
+<hr>
+<!-- Vamos a modificar el estilo directamente como un style in line-->
+<label for="">Nombre: </label>
+<input type="text" required #nameInput4="ngModel" [(ngModel)]="person.name">
+<p [style.font-style]="nameInput4.invalid?  'italic' : 'normal'">Texto Texto Texto</p>
+
+<hr>
+<h1>Tamaños y estilos</h1>
+<div class="dos-columns">
+  <div>
+    <!-- Se esta escuchando la variable widthImg -->
+    <input type="number" [(ngModel)]="widthImg">
+    
+    <!-- <img [style.width.px]="100" [src]="img" alt="">     -->
+    <img [style.width.px]="widthImg" [src]="img" alt="">    
+    <img [style.width.px]="widthImg" [src]="img" alt="">    
+
+  </div>
+  <div></div>
+</div>
 
 
- </div>
 
-
-
-
-
-
-    <hr style="margin-bottom: 5em;">
+<hr style="margin-bottom: 5em;">
