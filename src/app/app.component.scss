@@ -4,3 +4,14 @@
     overflow: auto; //Para que tenga scroll
     background: red;
 }
+
+img[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -100%;
+    left: 0;
+    color: white;
+    background: black !important;
+    font-family: serif;
+    font-size: 1em;
+  }

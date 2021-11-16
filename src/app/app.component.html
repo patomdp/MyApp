@@ -157,6 +157,47 @@
   </li>
 </ul>
 
+<hr>
+<!-- Video 13 -->
+<h1>*ngFor Objetos</h1>
+<div style="display: flex; gap: 1em">
+  <div *ngFor="let product of products; index as i">
+  <!-- no con string interpolation, sino con property binding
+    <img src="{{product.image}}" height="100px" alt=""> -->
+
+    <img [src]="product.image" width="250px" alt="image-{{i}}" title="{{product.name}}">
+    <h2> $ {{product.price}}</h2>
+    <p>{{product.name}}}</p>
+
+  </div>
+</div>
+
+<hr>
+<h1>ngSwitch sin *</h1>
+
+<input type="text" required [(ngModel)]="person.name" />
+<!-- Se pueden poner muchos IF, pero no es lo recomendable -->
+
+<!-- <p *ngIf="person.name === 'nicolas'"> La persona es Nicolas</p>
+<p *ngIf="person.name === 'julian'"> La persona es Julian</p>
+<p *ngIf="person.name === 'camilo'"> La persona es Camilo</p>
+ -->
+
+ <!-- NGSWITCH se utiliza el [property binding] -->
+ <div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'seiya'"> El santo es Seiya de Pegaso</p>
+  <p *ngSwitchCase="'shiryu'"> El santo es Shiryu de Dragón</p>
+  <p *ngSwitchCase="'hyoga'"> El santo es Hyoga de Cisne</p>
+  <p *ngSwitchCase="'shun'"> El santo es Shun de Andrómeda</p>
+  <p *ngSwitchCase="'ikki'"> El santo es Ikki de Fénix</p>
+  <p *ngSwitchDefault> No se conoce el santo</p>
+
+
+ </div>
+
+
+
+
 
 
     <hr style="margin-bottom: 5em;">
