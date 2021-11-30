@@ -155,7 +155,7 @@
 
 <ul>
   <li *ngFor="let saint of saints; index as i">
-    {{ saint.name }} - {{saint.star}} - 
+    {{ saint.name }} - {{saint.star}} -
     <button (click)="removeStar(i)">-⭐</button>
     <button (click)="addStar(i)">+⭐</button>
   </li>
@@ -199,7 +199,7 @@
 
 <hr>
 <h1>Class and Style</h1>
-<input type="text" minlength="3" required #saintInput="ngModel" [(ngModel)]="newSaint.name"/>
+<input type="text" minlength="3" required #saintInput="ngModel" [(ngModel)]="newSaint.name" />
 <!--  
 Con class.active se bindea y activa la clase si se cumple la condicion
 en este caso, que el nameInput sea valido
@@ -220,15 +220,60 @@ en este caso, que el nameInput sea valido
   <div>
     <!-- Se esta escuchando la variable widthImg -->
     <input type="number" [(ngModel)]="widthImg">
-    
+
     <!-- <img [style.width.px]="100" [src]="img" alt="">     -->
-    <img [style.width.px]="widthImg" [src]="img" alt="">    
-    <img [style.width.px]="widthImg" [src]="img" alt="">    
+    <img [style.width.px]="widthImg" [src]="img" alt="">
+    <img [style.width.px]="widthImg" [src]="img" alt="">
 
   </div>
   <div></div>
 </div>
 
+<hr>
+<h1>NgClass & NgStyle</h1>
+<input type="text" required #saintInput2="ngModel" [(ngModel)]="newSaint.name" />
 
+
+<!-- Yo quiero que este line-error tenga dos clases -->
+
+<!-- En lugar de ir agregando las class.una por una, le puedo poner un objeto clase 
+  
+  <hr class="line-error" 
+  [class.valid]="saintInput2.valid" 
+  [class.invalid]="saintInput2.invalid" 
+
+/> -->
+<hr class="line-error" 
+[ngClass]="{
+  'valid': saintInput2.valid,
+  'invalid': saintInput2.invalid
+}"
+/>
+
+<hr>
+
+<h1>NgStyle</h1>
+
+<div class="styles">
+  <div>
+    <input type="number" required [(ngModel)]="box.width" />
+    <input type="number" required [(ngModel)]="box.height" />
+    <input type="color" required [(ngModel)]="box.background" />
+  </div>
+  <!-- Como tengo varios estilos los voy a adjuntar en una sola instruccion -->
+  <div [ngStyle]="{
+    'width.px':box.width,
+    'height.px':box.height,
+    'background-color':box.background,
+    'display':'block',
+    'border-radius': '1em'
+  }">
+
+  </div>
+</div>
+
+<hr>
+
+<app-form-login></app-form-login>
 
 <hr style="margin-bottom: 5em;">

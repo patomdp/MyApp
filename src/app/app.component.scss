@@ -66,3 +66,14 @@ img[title]:hover::after {
     display: grid;
     grid-template-columns: repeat (2,1fr );
 }
+
+.line-error{
+    height: 0;
+    border-bottom: 1px solid;
+    &.valid{
+        border-color: greenyellow;
+    }
+    &.invalid{
+      border-color: red;   
+    }
+}

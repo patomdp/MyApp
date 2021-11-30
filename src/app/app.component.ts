@@ -168,6 +168,16 @@ export class AppComponent {
     }
   ]
 
+  // Box para ver styles
+
+  box: any = {
+    width: 100,
+    height: 100,
+    background: 'red'
+
+  }
+
+
 
 
 }

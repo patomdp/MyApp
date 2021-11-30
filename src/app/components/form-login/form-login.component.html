@@ -1,0 +1,32 @@
+<h1>Formulario</h1>
+
+<form (ngSubmit)="onRegister()" #myForm="ngForm" class="form-group">
+    <!-- <div class="input-group">
+        <label for="name">Nombre</label>
+        <input type="text" required id="name" name="name" [(ngModel)]="register.name">
+        <p>mensajes de error</p>
+    </div> -->
+    <div class="input-group">
+        <label for="name">email</label>
+        <br>
+        <input type="email" required  id="email" name="email"  [(ngModel)]="register.email"> 
+        <p>mensajes de error</p>
+    </div>
+    <div class="input-group">
+        <label for="name">Password</label>
+        <br>
+        <input type="password" required id="password" name="password" #password="ngModel" [(ngModel)]="register.password">
+        <p *ngIf="password.invalid">Invalid user ID and password combination</p>
+    </div>
+    <!-- hay uno solo de submit en este caso -->
+    <div class="btn-group">
+
+        <button [disabled]="!myForm.valid" type="submit" class="button_primary--disabled">Log in</button>
+        <br>
+        <a href="#">Forgot my password</a>
+        <br>
+        <br>
+        <button type="button" class="button_secondary">Sign up</button>
+    </div>
+</form>
+
